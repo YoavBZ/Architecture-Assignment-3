@@ -1,0 +1,12 @@
+0:
+3:  a   a   +1
+6:  b   b   +1
+9:  c   c   +1
+12: temp temp +1
+15: temp i  +1
+18: a   temp  +1
+21: temp temp +1
+24: increment i
+24: temp i +1
+27: b   temp
+30: 
