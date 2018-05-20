@@ -87,6 +87,8 @@ main:
 			jne .printLoop
 			
 	.done:
+		mov rdi, [memory]
+		call free
 		mov rsp, rbp
 		pop rbp
 		ret
