@@ -1,6 +1,6 @@
 section .data
-	spaceFs: db "%d ", 0
-	format: db "%d", 0
+	ldFormat: db "%ld ", 0
+	dFormat: db "%d ", 0
 
 section .bss
 
@@ -18,7 +18,7 @@ main:
 	xor rax, rax
 
     .inputLoop:
-        mov rdi, spaceFs
+        mov rdi, ldFormat
         mov rsi, temp
         call scanf
         cmp eax, -1
@@ -59,10 +59,10 @@ main:
 			mov eax, dword [rdi + 4*rcx]			; M[i]
 			mov ebx, dword [rdi + 4*rcx + 4]		; M[i+1]
 			mov edx, dword [rdi + 4*rbx]			; M[M[i+1]]
-			sub dword [rdi + 4*rax], edx	; substructing B from A
+			sub dword [rdi + 4*rax], edx			; substructing B from A
 			cmp dword [rdi + 4*rax], 0
 			jge .iterate
-			mov ecx, dword [rdi + 4*rcx + 8]		; "C"
+			mov ecx, dword [rdi + 4*rcx + 8]		; M[i+2]
 			jmp .mainLoop
 
 			.iterate:
@@ -75,7 +75,7 @@ main:
 			mov rdi, [memory]
 			xor rsi, rsi
 			mov rsi, [rdi + 4*rcx]
-			mov rdi, spaceFs
+			mov rdi, dFormat
 			xor rax, rax
 			push rcx
 			push rcx
